@@ -24,4 +24,37 @@ SELECT DISTINCT
 FROM
     customers
 WHERE
-    state IS NOT NULL
+    state IS NOT NULL;
+    
+-- BETWEEN, LIKE, IN, IS NULL
+-- Select all products which price is between 10 and 20 (BBTWEEN)
+SELECT 
+    productName, productLine, buyPrice
+FROM
+    products
+WHERE
+    products.buyPrice BETWEEN 10 AND 20;
+    
+-- Select all customers whose origin city start with letter "s"
+SELECT 
+    customerName, city
+FROM
+    customers
+WHERE
+    city LIKE 's%';
+    
+-- Select all customers whose origin city is "Paris" or "London"
+SELECT 
+    customerName, city
+FROM
+    customers
+WHERE
+    city IN ('Paris' , 'London');
+
+-- Select all customers whose postalCode is null
+SELECT 
+    customerName, postalCode
+FROM
+    customers
+WHERE
+    customers.postalCode IS NULL;
