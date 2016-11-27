@@ -84,4 +84,15 @@ SELECT
     SUM(priceeach) AS total
 FROM
     orderdetails
-GROUP BY ordernumber;
+GROUP BY ordernumber
+HAVING total > 1000;
+
+-- Return all the orders that have sales greater than 1500$ and are "shipped"
+SELECT 
+    a.ordernumber, SUM(priceeach) total, status
+FROM
+    orderdetails a
+        INNER JOIN
+    orders b ON b.ordernumber = a.ordernumber
+GROUP BY ordernumber
+HAVING b.status = 'Shipped' AND total > 1500;
