@@ -61,3 +61,19 @@ WHERE
         FROM
             orders);
 
+
+-- CORRELATED QUERIES
+
+-- Select products whose buy prices are greater than the avarage buy price of all the 
+-- products for a specific product line
+SELECT 
+    productname, buyprice
+FROM
+    products AS p1
+WHERE
+    buyPrice > (SELECT 
+            AVG(buyprice)
+        FROM
+            products
+        WHERE
+            productLine = p1.productLine);
