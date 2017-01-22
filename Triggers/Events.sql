@@ -25,6 +25,7 @@ do
 	insert into messages(message, created_at)
     values('Test mysqk recurring event', NOW());
     
+--
 CREATE EVENT IF NOT EXISTS message_event_every_minute_hour
 ON schedule every 1 minute
 starts current_timestamp()
